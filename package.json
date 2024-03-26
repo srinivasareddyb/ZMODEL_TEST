@@ -1,0 +1,52 @@
+{
+  "name": "model.app.zmodel_test",
+  "version": "0.0.1",
+  "private": true,
+  "keywords": [
+    "ui5",
+    "openui5",
+    "sapui5"
+  ],
+  "main": "webapp/index.html",
+  "scripts": {
+    "start": "fiori run --port 8000 --open 'index.html'", 
+    "start-local": "fiori run --config ./ui5-local.yaml --open test/flpSandboxMockServer.html#app-tile",
+    "start-flp": "fiori run --open test/flpSandbox.html#app-tile",
+    "build": "ui5 build -a --clean-dest --include-task=generateManifestBundle generateCachebusterInfo",
+    "installdep": "npm install",
+    "serve-dist": "ws --compress -d dist",
+    "deploy": "fiori verify",
+    "deploy-config": "fiori add deploy-config",
+    "start-mock": "fiori run --open 'test/flpSandboxMockServer.html#app-tile'",
+    "suite-tests": "fiori run --open 'test/testsuite.qunit.html'",
+    "unit-tests": "fiori run --open 'test/unit/unitTests.qunit.html'",
+    "int-tests": "fiori run --open 'test/integration/opaTests.qunit.html'",
+    "pre_lint": "npm install eslint @babel/eslint-parser eslint-plugin-fiori-custom@2.6.7 -save=false",
+    "lint": "npx eslint webapp --rulesdir .\\node_modules\\eslint-plugin-fiori-custom\\lib\\rules\\",
+    "lint_ci": ".\\node_modules\\.bin\\eslint .\\webapp -c .\\.eslintrc -o .\\lintoutput/UIC_Eslint.html -f html --no-eslintrc --rulesdir .\\node_modules\\eslint-plugin-fiori-custom\\lib\\rules\\ --ignore-pattern 'test/**' --ignore-pattern 'src/test/**' --ignore-pattern 'target/**' --ignore-pattern 'webapp/test/**' --ignore-pattern 'src/main/webapp/test/**' --ignore-pattern 'webapp/localservice/**' --ignore-pattern '/src/main/webapp/localService/**' --ignore-pattern 'backup/**' --ignore-pattern Gruntfile.js --ignore-pattern changes_preview.js --ignore-pattern gulpfile.js",
+    "lint_ci_xml": "npx eslint ./webapp -c ./.eslintrc -o ./lintoutput/UIC_Eslint.xml -f checkstyle --no-eslintrc --rulesdir ./node_modules/eslint-plugin-fiori-custom/lib/rules/ --ignore-pattern 'test/**' --ignore-pattern 'src/test/**' --ignore-pattern 'target/**' --ignore-pattern 'webapp/test/**' --ignore-pattern 'src/main/webapp/test/**' --ignore-pattern 'webapp/localservice/**' --ignore-pattern '/src/main/webapp/localService/**' --ignore-pattern 'backup/**' --ignore-pattern Gruntfile.js --ignore-pattern changes_preview.js --ignore-pattern gulpfile.js",
+    "lint_ci_windows": ".\\node_modules\\.bin\\eslint .\\webapp -f .\\node_modules\\eslint-plugin-fiori-custom\\lib\\reporter\\detailed.js -c .\\.eslintrc -o .\\lintoutput\\UIC_Eslint.html --no-eslintrc --rulesdir .\\node_modules\\eslint-plugin-fiori-custom\\lib\\rules\\ --ignore-pattern 'test/**' --ignore-pattern 'src/test/**' --ignore-pattern 'target/**' --ignore-pattern 'webapp/test/**' --ignore-pattern 'src/main/webapp/test/**' --ignore-pattern 'webapp/localservice/**' --ignore-pattern '/src/main/webapp/localService/**' --ignore-pattern 'backup/**' --ignore-pattern Gruntfile.js --ignore-pattern changes_preview.js --ignore-pattern gulpfile.js"
+
+  },
+  "devDependencies": {
+    "@sap/ux-ui5-tooling": "^1.3.7",
+    "@ui5/cli": "^3.0.2",
+    "@ui5/fs": "^2.0.6",
+    "@ui5/logger": "^2.0.1",
+    "cheerio": "1.0.0-rc.9",
+    "ui5-middleware-simpleproxy": "^0.7.3",
+    "@babel/eslint-parser": "^7.15.8",
+    "eslint": "^7.32.0",
+    "eslint-plugin-fiori-custom": "2.6.7",
+    "local-web-server": "^4.2.1",
+    "rimraf": "3.0.2"
+  },
+  "ui5": {
+    "dependencies": [
+      "@sap/ux-ui5-tooling"
+    ]
+  },
+  "author": "Srinivasa Reddy",
+  "license": "ISC",
+  "description": ""
+}
